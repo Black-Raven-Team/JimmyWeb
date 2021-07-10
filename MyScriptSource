@@ -1,0 +1,28 @@
+function postComment() {
+	//var comment = document().getElementById("#userComment").val();
+	var comment=$("#userComment").val();
+
+	$.ajax({
+		url: "http://localhost:8080/comment/add?comment=" + comment,
+		success: function(result) {
+
+			$("#comments").prependTo(comment);
+			comment.val("");
+		}
+	});
+}
+
+
+var main = function() {
+	console.log("main()");
+		var $input = $("#comment");
+		var comment = $input.val();
+		fetch('http://localhost:8080/comment?comment='.concat(comment));
+
+		if (comment !=""){
+			var html=$("<li>").text(comment);
+			html.prependTo('#comments');
+            $input.val("");
+		}
+		return false;
+}

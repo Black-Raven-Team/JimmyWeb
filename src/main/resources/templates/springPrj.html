@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />
+  <link rel='stylesheet' href='../../../styles.css' />
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="keyword" content="Jimmy Wang">
+  <meta name="description" content="Jimmy's Home Page">
+  <link rel="stylesheet" href="styles.css">
+</head>
+</head>
+<body style="background-color:springgreen;">
+<body>
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+          <h1 style="text-align: center;"><span style="color: #ff6600;"><em><strong>Comments</strong></em></span></h1>
+          <h2 style="text-align: center;"><span style="color: #ff9900;">Please leave your comments so we can exchange ideas in programming</span></h2>
+          <h2 style="text-align: center;"><span style="color: #ff0000;"><strong>Note: This page is built with Spring Boot Framework</strong></span></h2>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+  <div class="container">
+      <div>
+        <form action="#" th:action="@{/springPrj/add}" th:object="${comment}" method="post">
+          Name: <input type="text" th:field="*{name}"> <br>
+          Email: <input type="text" th:field="*{email}"><br>
+          Comment: <input type="text" th:field="*{commentValue}"><br>
+
+          <input type="submit" >
+        </form>
+
+      </div>
+      <div>
+          <table>
+              <tr th:each="comment: ${commentsList}">
+                  <th scope="row" th:text="${comment.name}">Said:</th>
+                  <th scope="row" th:text="${comment.commentValue}"></th>
+              </tr>
+          </table>
+      </div>
+    <ul id="comments" class="comments">
+     </ul>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="myScript.js"></script>
+
+</body>
+</html>
